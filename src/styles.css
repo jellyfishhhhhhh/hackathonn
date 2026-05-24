@@ -1,0 +1,241 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Manrope", system-ui, -apple-system, sans-serif;
+  --font-heading: "Sora", system-ui, sans-serif;
+  --font-serif: "Sora", system-ui, sans-serif;
+  --font-display: "Times New Roman", Times, serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --shadow-soft: 0 1px 2px oklch(0 0 0 / 0.04), 0 1px 3px oklch(0 0 0 / 0.04);
+  --shadow-card: 0 4px 16px -8px oklch(0.25 0.08 260 / 0.12);
+}
+
+
+:root {
+  --radius: 0.5rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.18 0.04 260);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.04 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.04 260);
+  /* Institutional blue matching MEC logo */
+  --primary: oklch(0.38 0.16 260);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.97 0.01 255);
+  --secondary-foreground: oklch(0.25 0.08 260);
+  --muted: oklch(0.97 0.005 255);
+  --muted-foreground: oklch(0.5 0.02 255);
+  --accent: oklch(0.95 0.02 260);
+  --accent-foreground: oklch(0.3 0.12 260);
+  --destructive: oklch(0.55 0.22 27);
+  --destructive-foreground: oklch(0.99 0 0);
+  --success: oklch(0.55 0.14 155);
+  --success-foreground: oklch(0.99 0 0);
+  --warning: oklch(0.72 0.15 75);
+  --warning-foreground: oklch(0.2 0.05 75);
+  --border: oklch(0.92 0.008 255);
+  --input: oklch(0.93 0.008 255);
+  --ring: oklch(0.38 0.16 260);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    font-family: var(--font-sans);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+  }
+
+  .font-display {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+  }
+
+  .eelev-wordmark {
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
+    padding-block: 0.08em;
+    font-weight: 600;
+    line-height: 1.15;
+  }
+
+  .eelev-wordmark .eelev-initial {
+    color: transparent;
+    background: linear-gradient(135deg, #0074c7, #005ec8, #1740cc 45%, #212aab, #23138b);
+    -webkit-background-clip: text;
+    background-clip: text;
+    margin-inline: -0.04em -0.06em;
+    padding-inline: 0.06em 0.08em;
+    font-style: italic;
+    font-weight: 600;
+    display: inline-block;
+  }
+}
+
+.home-hero {
+  min-height: calc(100svh - 5rem);
+  position: relative;
+}
+
+.home-hero::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: clamp(320px, 48vw, 720px);
+  background: linear-gradient(
+    to top,
+    color-mix(in oklab, var(--primary) 14%, transparent) 0%,
+    color-mix(in oklab, var(--primary) 6%, transparent) 45%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.students-marquee-section {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4vw;
+  width: 100%;
+  height: clamp(260px, 38vw, 560px);
+  z-index: 5;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+
+.students-marquee {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.92;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 28%,
+    rgba(0, 0, 0, 0.2) 45%,
+    rgba(0, 0, 0, 0.65) 65%,
+    black 85%,
+    black 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 28%,
+    rgba(0, 0, 0, 0.2) 45%,
+    rgba(0, 0, 0, 0.65) 65%,
+    black 85%,
+    black 100%
+  );
+}
+
+@media (max-width: 640px) {
+  .students-marquee-section {
+    height: clamp(200px, 52vw, 320px);
+    bottom: -8vw;
+  }
+
+  .home-hero {
+    min-height: calc(100svh - 4.5rem);
+  }
+}
+
+.students-marquee-track {
+  display: flex;
+  width: max-content;
+  min-width: 200%;
+  height: 100%;
+  animation: students-marquee 50s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.students-marquee-group {
+  display: flex;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+.students-marquee-group img {
+  height: 100%;
+  width: auto;
+  flex-shrink: 0;
+  user-select: none;
+  object-fit: contain;
+  object-position: bottom;
+}
+
+@keyframes students-marquee {
+  from { transform: translate3d(-50%, 0, 0); }
+  to { transform: translate3d(0, 0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .students-marquee-track {
+    animation-duration: 120s;
+  }
+}
+
+.hero-content {
+  z-index: 10;
+}
+
+.hero-cta {
+  position: relative;
+  z-index: 30;
+}
+
+
+
+
